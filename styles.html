@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>10 款圣诞树造型</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #070a12; color: #e9e2d3;
+    font-family: "Microsoft YaHei", "PingFang SC", system-ui, sans-serif; overflow: hidden; }
+  #app { height: 100%; display: flex; flex-direction: column; }
+  header { padding: 18px 28px 10px; flex: none; }
+  header h1 { margin: 0; font-size: 22px; font-weight: 600; letter-spacing: .04em; color: #f3e6c4; }
+  header p { margin: 6px 0 0; font-size: 13px; color: #9c917d; letter-spacing: .02em; }
+  #stage { position: relative; flex: 1; min-height: 0; margin: 6px 18px 16px; }
+  #gl { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  #cards { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr); gap: 10px; pointer-events: none; }
+  .card { position: relative; border: 1px solid rgba(214, 180, 110, .18); border-radius: 10px;
+    background: rgba(8, 11, 18, .28); overflow: hidden; }
+  .card .idx { position: absolute; left: 10px; top: 8px; font-size: 12px; color: #d9b978;
+    letter-spacing: .08em; font-variant-numeric: tabular-nums; }
+  .card .txt { position: absolute; left: 0; right: 0; bottom: 0; padding: 26px 10px 8px;
+    background: linear-gradient(180deg, rgba(6,8,14,0), rgba(6,8,14,.92) 55%);
+    font-size: 13px; color: #efe3c6; }
+  .card .txt small { display: block; margin-top: 2px; font-size: 11px; color: #8e8371; }
+</style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>10 款圣诞树造型 · 选一个编号，我按它改</h1>
+    <p>都是同一套粒子树引擎能实现的方向；差别在轮廓、枝叶结构、灯光和氛围。挑中后我再把细节做细。</p>
+  </header>
+  <div id="stage">
+    <canvas id="gl"></canvas>
+    <div id="cards"></div>
+  </div>
+</div>
+<script type="importmap">
+{ "imports": { "three": "./vendor/three/build/three.module.js" } }
+</script>
+<script type="module" src="js/styles-preview.js?v=1"></script>
+</body>
+</html>

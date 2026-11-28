@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>造型 + 装饰效果</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #070a12; color: #e9e2d3;
+    font-family: "Microsoft YaHei", "PingFang SC", system-ui, sans-serif; overflow: hidden; }
+  #app { height: 100%; display: flex; flex-direction: column; }
+  header { padding: 20px 28px 8px; flex: none; }
+  header h1 { margin: 0; font-size: 22px; font-weight: 600; letter-spacing: .04em; color: #f3e6c4; }
+  header p { margin: 6px 0 0; font-size: 13px; color: #9c917d; }
+  #stage { position: relative; flex: 1; min-height: 0; margin: 8px 18px 18px; }
+  #gl { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  #cards { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; pointer-events: none; }
+  .card { position: relative; border: 1px solid rgba(214, 180, 110, .2); border-radius: 12px;
+    background: rgba(8, 11, 18, .25); overflow: hidden; }
+  .card .txt { position: absolute; left: 0; right: 0; bottom: 0; padding: 30px 14px 10px;
+    background: linear-gradient(180deg, rgba(6,8,14,0), rgba(6,8,14,.92) 55%);
+    font-size: 14px; color: #efe3c6; letter-spacing: .02em; }
+  .card .txt small { display: block; margin-top: 3px; font-size: 11px; color: #8e8371; }
+</style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>同一批造型 + 装饰后长什么样</h1>
+    <p>彩球、灯串、拍立得照片、树底礼盒都会放上去；每款造型能挂多少装饰不一样，我先用 01 / 06 / 09 示范。</p>
+  </header>
+  <div id="stage">
+    <canvas id="gl"></canvas>
+    <div id="cards"></div>
+  </div>
+</div>
+<script type="importmap">{ "imports": { "three": "./vendor/three/build/three.module.js" } }</script>
+<script type="module" src="js/styles-deco.js?v=1"></script>
+</body>
+</html>

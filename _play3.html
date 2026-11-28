@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8" /><title>export test</title>
+<style>html,body{margin:0;background:#111}canvas{width:1080px;height:1920px;transform:scale(.42);transform-origin:top left;position:fixed;left:0;top:0}</style>
+</head>
+<body>
+<video id="v" src="_export.mp4" muted playsinline preload="auto" style="display:none"></video>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script>
+  const v = document.getElementById('v'), c = document.getElementById('c'), g = c.getContext('2d');
+  const target = Number(new URLSearchParams(location.search).get('t') || 6);
+  let done = false;
+  v.addEventListener('loadedmetadata', () => {
+    document.title = `dur=${v.duration.toFixed(2)} ${v.videoWidth}x${v.videoHeight}`;
+    v.play().catch(() => {});
+    v.requestVideoFrameCallback(tick);
+  });
+  function tick(now, meta) {
+    g.drawImage(v, 0, 0, 1080, 1920);
+    window.__vt = v.currentTime;
+    if (!done && v.currentTime >= target) {
+      done = true;
+      v.pause();
+      document.title = `P at=${v.currentTime.toFixed(2)} dur=${v.duration.toFixed(2)}`;
+      return;
+    }
+    if (!v.ended) v.requestVideoFrameCallback(tick);
+  }
+</script>
+</body>
+</html>
